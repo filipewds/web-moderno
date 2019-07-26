@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+        }
+
+        html {
+            font-family: Oswald;
+            background-color: #eee;
+        }
+
+        .cabecalho {
+            height: 67px;
+            width: 100%;
+            background-color: #333;
+            border-bottom: solid 2px #4faddb;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 67px;
+            width: auto;
+            padding: 0;
+            margin: 0px -7px;
+        }
+
+        nav a,
+        .autenticacao a{
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.5em;
+            padding: 12px;
+            align-items: center;
+            position: relative;
+            margin: 0 7px;
+        }
+
+
+        .logo,
+        .menu,
+        .autenticacao {
+            display: inline-block;
+            margin: 0;
+            line-height: 67px;
+            vertical-align: middle;
+            align-items: center;
+            height: 100%;
+        }
+
+        .autenticacao {
+            float: right;
+            padding: 0 10px;
+        }
+
+        .logo img{
+            position: relative;
+            height: 50px;
+            width: auto;
+            padding: 5px;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .current, nav ul li a:hover {
+            background-color: #4faddb;
+            color: #222;
+        }
+
+        .destaque {
+            color: white;
+            padding: 7px!important;
+            background-color: rgb(253, 61, 93);
+            border-radius: 20px;
+        }
+
+        @media (max-width: 871px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+
+        @media (max-width: 665px) {
+
+            .menu {
+                display: none;
+            }
+
+            .menu-toggle { 
+                display: block;
+                float: right;
+                background-color: rgb(77, 75, 75);
+                border: none;
+                color: #fff;
+                font-size: 0.5em;
+                padding: 20px 25px;
+                position: relative;
+                top: 15%;
+                right: 3%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li><li>
+                    <a href="#cursos">Cursos</a>
+                </li><li>
+                    <a href="#sobre">Sobre</a>
+                </li><li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registrar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        const links = document.querySelectorAll('li a, div a')
+        
+        links.forEach(link => {
+            link.onclick = e => {
+                const atr = link.getAttribute('href')
+                
+                const cur = document.querySelector('.current')
+                if(cur) cur.classList.remove('current')
+                document.querySelector(`li [href = "${atr}"]`).classList.add('current')
+            }
+        })
+        
+    </script>
+</body>
+
+</html>
